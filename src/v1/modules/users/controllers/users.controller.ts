@@ -7,16 +7,11 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { UsersService } from '../services/users.service';
+import { CreateUserDto } from '../dto/create-user.dto';
+import { UpdateUserDto } from '../dto/update-user.dto';
 
-@ApiTags('Users')
-@Controller({
-  version: '1',
-  path: 'users',
-})
+@Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -27,7 +22,7 @@ export class UsersController {
 
   @Get()
   findAll() {
-    return 'hi from v1';
+    return this.usersService.findAll();
   }
 
   @Get(':id')
