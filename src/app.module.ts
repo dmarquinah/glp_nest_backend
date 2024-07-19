@@ -9,6 +9,7 @@ import { ProductsModule } from './v1/modules/products/products.module';
 import { OrdersModule } from './v1/modules/orders/orders.module';
 import { ConfigModule } from '@nestjs/config';
 import { environments } from './env.config';
+import { DatabaseModule } from './v1/modules/database/database.module';
 import config from './config';
 import * as Joi from 'joi';
 
@@ -34,6 +35,7 @@ import * as Joi from 'joi';
     BillingsModule,
     ProductsModule,
     OrdersModule,
+    DatabaseModule,
   ],
 })
 export class AppModule {}
