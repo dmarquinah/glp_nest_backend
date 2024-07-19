@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { UsersModule } from './v1/modules/users/users.module';
 import { EmployeesModule } from './v1/modules/employees/employees.module';
-import { EmployeesManagingModule } from './v1/modules/employees-managing/employees-managing.module';
 import { AddressesModule } from './v1/modules/addresses/addresses.module';
 import { ClientsModule } from './v1/modules/clients/clients.module';
 import { WarehousesModule } from './v1/modules/warehouses/warehouses.module';
@@ -13,7 +12,7 @@ import { OrdersModule } from './v1/modules/orders/orders.module';
 import { ConfigModule } from '@nestjs/config';
 import { environments } from './env.config';
 import config from './config';
-import Joi from 'joi';
+import * as Joi from 'joi';
 
 @Module({
   imports: [
@@ -31,7 +30,6 @@ import Joi from 'joi';
     }),
     UsersModule,
     EmployeesModule,
-    EmployeesManagingModule,
     AddressesModule,
     ClientsModule,
     WarehousesModule,
