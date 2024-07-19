@@ -10,9 +10,25 @@ import { BillingsModule } from './v1/modules/billings/billings.module';
 import { ProductsModule } from './v1/modules/products/products.module';
 import { WarehouseMovementsModule } from './v1/modules/warehouse-movements/warehouse-movements.module';
 import { OrdersModule } from './v1/modules/orders/orders.module';
+import { ConfigModule } from '@nestjs/config';
+import { environments } from './env.config';
+import config from './config';
+import Joi from 'joi';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: environments[process.env.NODE_ENV] || '.env',
+      load: [config],
+      isGlobal: true,
+      validationSchema: Joi.object({
+        MYSQL_DB: Joi.string().required(),
+        MYSQL_USER: Joi.string().required(),
+        MYSQL_PASSWORD: Joi.string().required(),
+        MYSQL_PORT: Joi.number().required(),
+        MYSQL_HOST: Joi.string().required(),
+      }),
+    }),
     UsersModule,
     EmployeesModule,
     EmployeesManagingModule,
