@@ -12,6 +12,18 @@ import { WarehouseMovementsModule } from './v1/modules/warehouse-movements/wareh
 import { OrdersModule } from './v1/modules/orders/orders.module';
 
 @Module({
-  imports: [UsersModule, EmployeesModule, EmployeesManagingModule, AddressesModule, ClientsModule, WarehousesModule, WarehouseEmployeesModule, BillingsModule, ProductsModule, WarehouseMovementsModule, OrdersModule],
+  imports: [
+    UsersModule,
+    EmployeesModule,
+    EmployeesManagingModule,
+    AddressesModule,
+    ClientsModule,
+    WarehousesModule,
+    WarehouseEmployeesModule,
+    BillingsModule,
+    ProductsModule,
+    WarehouseMovementsModule,
+    OrdersModule,
+  ],
 })
 export class AppModule {}
