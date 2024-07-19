@@ -4,10 +4,8 @@ import { EmployeesModule } from './v1/modules/employees/employees.module';
 import { AddressesModule } from './v1/modules/addresses/addresses.module';
 import { ClientsModule } from './v1/modules/clients/clients.module';
 import { WarehousesModule } from './v1/modules/warehouses/warehouses.module';
-import { WarehouseEmployeesModule } from './v1/modules/warehouse-employees/warehouse-employees.module';
 import { BillingsModule } from './v1/modules/billings/billings.module';
 import { ProductsModule } from './v1/modules/products/products.module';
-import { WarehouseMovementsModule } from './v1/modules/warehouse-movements/warehouse-movements.module';
 import { OrdersModule } from './v1/modules/orders/orders.module';
 import { ConfigModule } from '@nestjs/config';
 import { environments } from './env.config';
@@ -33,10 +31,8 @@ import * as Joi from 'joi';
     AddressesModule,
     ClientsModule,
     WarehousesModule,
-    WarehouseEmployeesModule,
     BillingsModule,
     ProductsModule,
-    WarehouseMovementsModule,
     OrdersModule,
   ],
 })

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateWarehouseEmployeeDto } from '../dto/create-warehouse-employee.dto';
-import { UpdateWarehouseEmployeeDto } from '../dto/update-warehouse-employee.dto';
+import { CreateWarehouseEmployeeDto } from '../../warehouses/dto/create-warehouse-employee.dto';
+import { UpdateWarehouseEmployeeDto } from '../../warehouses/dto/update-warehouse-employee.dto';
 
 @Injectable()
 export class WarehouseEmployeesService {
