@@ -7,7 +7,7 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { WarehouseMovementsService } from '../../warehouses/services/warehouse-movements.service';
+import { WarehouseMovementsService } from '../services/warehouse-movements.service';
 import { CreateWarehouseMovementDto } from '../dto/create-warehouse-movement.dto';
 import { UpdateWarehouseMovementDto } from '../dto/update-warehouse-movement.dto';
 

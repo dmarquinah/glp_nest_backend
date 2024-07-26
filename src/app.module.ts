@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './v1/modules/users/users.module';
-import { EmployeesModule } from './v1/modules/employees/employees.module';
-import { AddressesModule } from './v1/modules/addresses/addresses.module';
-import { ClientsModule } from './v1/modules/clients/clients.module';
-import { WarehousesModule } from './v1/modules/warehouses/warehouses.module';
-import { BillingsModule } from './v1/modules/billings/billings.module';
-import { ProductsModule } from './v1/modules/products/products.module';
-import { OrdersModule } from './v1/modules/orders/orders.module';
+import { UsersModule } from './v1/modules/internal/users/users.module';
+import { EmployeesModule } from './v1/modules/internal/employees/employees.module';
+import { AddressesModule } from './v1/modules/internal/addresses/addresses.module';
+import { ClientsModule } from './v1/modules/internal/clients/clients.module';
+import { WarehousesModule } from './v1/modules/internal/warehouses/warehouses.module';
+import { BillingsModule } from './v1/modules/internal/billings/billings.module';
+import { ProductsModule } from './v1/modules/internal/products/products.module';
+import { OrdersModule } from './v1/modules/internal/orders/orders.module';
 import { ConfigModule } from '@nestjs/config';
 import { environments } from './env.config';
-import { DatabaseModule } from './v1/modules/database/database.module';
+import { DatabaseModule } from './v1/modules/infrastructure/database/database.module';
 import config from './config';
 import * as Joi from 'joi';
 
