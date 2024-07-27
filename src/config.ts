@@ -9,5 +9,6 @@ export default registerAs('config', () => {
       password: process.env.MYSQL_PASSWORD,
       host: process.env.MYSQL_HOST,
     },
+    jwtSecret: process.env.JWT_SECRET,
   };
 });

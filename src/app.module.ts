@@ -10,6 +10,7 @@ import { OrdersModule } from './v1/modules/internal/orders/orders.module';
 import { ConfigModule } from '@nestjs/config';
 import { environments } from './env.config';
 import { DatabaseModule } from './v1/modules/infrastructure/database/database.module';
+import { AuthModule } from './v1/modules/infrastructure/auth/auth.module';
 import config from './config';
 import * as Joi from 'joi';
 
@@ -36,6 +37,7 @@ import * as Joi from 'joi';
     ProductsModule,
     OrdersModule,
     DatabaseModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
