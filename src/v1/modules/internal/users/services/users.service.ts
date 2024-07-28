@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../entities/user.entity';
 import { Repository } from 'typeorm';
 import { hash } from 'bcrypt';
+import { Role } from 'src/v1/modules/infrastructure/auth/models/roles.model';
 
 @Injectable()
 export class UsersService {
@@ -14,6 +15,7 @@ export class UsersService {
     const salt = parseInt(process.env.SALT || '10');
     const hashedPassword = await hash(newUser.password, salt);
     newUser.password = hashedPassword;
+    newUser.role = Role.COLLABORATOR;
     return await this.userRepo.save(newUser);
   }
 

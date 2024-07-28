@@ -1,34 +1,27 @@
 import {
   Controller,
   Get,
-  Post,
   Body,
   Patch,
   Param,
   Delete,
   ParseIntPipe,
-  HttpStatus,
-  HttpCode,
   UseGuards,
 } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
-import { CreateUserDto, UpdateUserDto } from '../dto/user.dto';
+import { UpdateUserDto } from '../dto/user.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/v1/modules/infrastructure/auth/guards/jwt-auth.guard';
-import { Public } from 'src/v1/modules/infrastructure/auth/decorators/public.decorator';
+import { RolesGuard } from 'src/v1/modules/infrastructure/auth/guards/roles.guard';
+import { Roles } from 'src/v1/modules/infrastructure/auth/decorators/roles.decorator';
+import { Role } from 'src/v1/modules/infrastructure/auth/models/roles.model';
 
-@UseGuards(JwtAuthGuard)
 @ApiTags('users')
 @Controller('users')
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(Role.SUPERVISOR, Role.MANAGER, Role.ADMIN)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
-
-  @HttpCode(HttpStatus.CREATED)
-  @Post()
-  @Public()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
 
   @Get()
   findAll() {

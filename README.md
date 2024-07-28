@@ -37,7 +37,7 @@ npm run migrations:show
 Replace `<insert_name>` with the name of the migration to be created.
 
 ```bash
-npm run migrations:generate ./src/v1/modules/database/migrations/<insert_name>
+npm run migrations:generate ./src/v1/modules/infrastructure/database/migrations/<insert_name>
 ```
 
 ### Execute migrations changes

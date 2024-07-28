@@ -19,6 +19,12 @@ export class User {
   @Column({ type: 'varchar', length: 255 })
   password: string; // This field should be encrypted
 
+  @Column({ name: 'is_active', type: 'bool', default: true })
+  isActive: boolean;
+
+  @Column({ type: 'varchar', length: 50 })
+  role: string;
+
   @CreateDateColumn()
   createdAt: Date;
 
