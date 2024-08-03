@@ -29,7 +29,7 @@ export class RolesGuard implements CanActivate {
     const isAuthRole = roles.some((role) => role === user.role);
     if (!isAuthRole) {
       throw new UnauthorizedException(
-        'Not authorized to execute this endpoint',
+        'Unsufficient privileges to access this endpoint',
       );
     }
 

@@ -6,12 +6,21 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { EmployeesService } from '../services/employees.service';
-import { CreateEmployeeDto } from '../dto/create-employee.dto';
-import { UpdateEmployeeDto } from '../dto/update-employee.dto';
+import { CreateEmployeeDto, UpdateEmployeeDto } from '../dto/employee.dto';
+import { ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/v1/modules/infrastructure/auth/guards/jwt-auth.guard';
+import { RolesGuard } from 'src/v1/modules/infrastructure/auth/guards/roles.guard';
+import { Role } from 'src/v1/modules/infrastructure/auth/models/roles.model';
+import { Roles } from 'src/v1/modules/infrastructure/auth/decorators/roles.decorator';
 
-@Controller('employees')
+@ApiTags('employees')
+@Controller('employee')
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(Role.SUPERVISOR, Role.MANAGER, Role.ADMIN)
 export class EmployeesController {
   constructor(private readonly employeesService: EmployeesService) {}
 
@@ -26,20 +35,20 @@ export class EmployeesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.employeesService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.employeesService.findOne(id);
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateEmployeeDto: UpdateEmployeeDto,
   ) {
-    return this.employeesService.update(+id, updateEmployeeDto);
+    return this.employeesService.update(id, updateEmployeeDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.employeesService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.employeesService.remove(id);
   }
 }

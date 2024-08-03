@@ -3,13 +3,16 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Employee } from '../../employees/entities/employee.entity';
 
 @Entity({ name: 'user' })
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'user_id' })
   id: number;
 
   @Column({ type: 'varchar', length: 255, unique: true })
@@ -30,4 +33,8 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToOne(() => Employee, (employee) => employee.user)
+  @JoinColumn()
+  employee: Employee;
 }
