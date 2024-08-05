@@ -15,6 +15,7 @@ export class JWTStrategy extends PassportStrategy(Strategy, 'jwt') {
   }
 
   validate(payload: PayloadToken) {
+    // This method can be used to validate the payload data against the db
     return payload;
   }
 }

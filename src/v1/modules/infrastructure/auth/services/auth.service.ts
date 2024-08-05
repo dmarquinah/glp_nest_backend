@@ -14,7 +14,7 @@ export class AuthService {
   ) {}
 
   async register(payload: RegisterDto) {
-    return this.userService.create(payload);
+    return this.userService.createWithEmployee(payload);
   }
 
   async validateUserLogin(email: string, password: string): Promise<User> {
