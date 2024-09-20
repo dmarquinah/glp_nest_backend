@@ -13,6 +13,8 @@ import { DatabaseModule } from './v1/modules/infrastructure/database/database.mo
 import { AuthModule } from './v1/modules/infrastructure/auth/auth.module';
 import config from './config';
 import * as Joi from 'joi';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { ResponseTransformInterceptor } from './v1/modules/infrastructure/utilities/interceptors/response.interceptor';
 
 @Module({
   imports: [
@@ -38,6 +40,12 @@ import * as Joi from 'joi';
     OrdersModule,
     DatabaseModule,
     AuthModule,
+  ],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ResponseTransformInterceptor,
+    },
   ],
 })
 export class AppModule {}
